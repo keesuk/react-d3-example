@@ -14,23 +14,14 @@ class BarChart extends Component {
   state = {
     bars: [], // array of rects
     // d3 helpers
-    xScale: d3
-      .scaleTime()
-      .range([margin.left, width - margin.right]),
-    yScale: d3
-      .scaleLinear()
-      .range([height - margin.bottom, margin.top]),
-    colorScale: d3
-      .scaleLinear(),
+    xScale: d3.scaleTime().range([margin.left, width - margin.right]),
+    yScale: d3.scaleLinear().range([height - margin.bottom, margin.top]),
+    colorScale: d3.scaleLinear(),
   };
 
-  xAxis = d3
-    .axisBottom()
-    .scale(this.state.xScale)
+  xAxis = d3.axisBottom().scale(this.state.xScale)
     .tickFormat(d3.timeFormat('%b'));
-  yAxis = d3
-    .axisLeft()
-    .scale(this.state.yScale)
+  yAxis = d3.axisLeft().scale(this.state.yScale)
     .tickFormat(d => `${d}℉`);
 
   static getDerivedStateFromProps(nextProps, prevState) {
